@@ -1,0 +1,42 @@
+<br>
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+                    <label>Nom Produit en tapant</label>
+                    <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+                    </div>
+                    </form>   
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th colspan="7">Liste de Produits</th>
+                    </tr>
+                    <tr>
+                        <th>ID Produit</th>
+                        <th>Nom Produit</th>
+                        <th>Prix Produit</th>
+                        <th>Date Création</th>
+                        <th>Categorie</th>
+                        <th>Supprimer</th>
+                        <th>Modifier</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let produit of produits">
+                    <tr>
+                        <td>{{produit.idProduit}}</td>
+                        <td>{{produit.nomProduit}}</td>
+                        <td>{{produit.prixProduit}}</td>
+                        <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{produit.categorie.nomCat}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerProduit(produit)">Supprimer</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/updateProduit',produit.idProduit]">Modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
